@@ -1,0 +1,19 @@
+.inputDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 220px;
+  margin: -110px 0 0 -100px;
+}
+.inputUser {
+  width: 200px;
+}
+.inputPass {
+  width: 200px;
+  margin-top: 20px;
+}
+.button {
+  width: 200px;
+  margin-top: 20px;
+}

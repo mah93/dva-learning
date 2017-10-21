@@ -21,10 +21,29 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(data => ({ data }))
-    .catch(err => ({ err }));
+export default function request(url, method, params) {
+  if (method === 'POST') {
+    const formData = new FormData();
+
+    for (const key in params) {
+      if (params[key] != null) {
+        const value = params[key];
+        formData.append(key, value);
+      }
+    }
+    return fetch(url, {
+      method: method,
+      body: formData,
+    }).then(checkStatus)
+      .then(parseJSON)
+      .then(data => ({ data }))
+      .catch(err => ({ err }));
+  }
+  if (method === 'GET') {
+    return fetch(url)
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(data => ({ data }))
+      .catch(err => ({ err }));
+  }
 }
