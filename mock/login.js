@@ -1,5 +1,4 @@
 const qs = require('qs');
-const Mock = require('mockjs');
 
 module.exports = {
   'POST /login' (req, res) {
